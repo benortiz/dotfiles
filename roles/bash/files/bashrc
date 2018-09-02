@@ -61,7 +61,8 @@ source "${GITAWAREPROMPT}/main.sh"
 ### Prompt Configuration ###
 ############################
 
-export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[32m\] \w\[\033[m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n\A \$ "
+export PS1="\n\n\[$bldylw\]\w\[$txtrst\] \[$txtblu\]\$git_branch\]\[$txtred\]\$git_dirty\[$txtrst\]\n\[$txtwht\]\A ▶\[$txtrst\] "
+
 export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 
 
