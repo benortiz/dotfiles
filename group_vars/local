@@ -24,6 +24,7 @@ homebrew_packages:
   - curl
   - diff-so-fancy
   - docker-clean
+  - fd
   - fzf
   - grip
   - heroku/brew/heroku
