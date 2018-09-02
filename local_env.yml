@@ -9,4 +9,5 @@
     - {role: ruby, tags: ['ruby']}
     - {role: vim, tags: ['vim', 'dotfiles']}
     - {role: terminal, tags: ['terminal']}
+    - {role: karabiner, tags: ['karabiner']}
     - {role: macos, tags: ['macos']}

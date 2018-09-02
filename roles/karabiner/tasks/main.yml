@@ -1,0 +1,11 @@
+- name: Makes sure the config directory exists
+  file: path="{{dotfiles_user_home}}/.config" state=directory
+
+- name: Makes sure the karabiner directory exists
+  file: path="{{dotfiles_user_home}}/.config/karabiner" state=directory
+
+- name: Symlink karabiner.config
+  file:
+    src: "{{ dotfiles_home  }}/roles/karabiner/files/karabiner.json"
+    dest: "{{dotfiles_user_home}}/.config/karabiner/karabiner.json"
+    state: link
