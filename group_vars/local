@@ -11,10 +11,10 @@ full_name: Benjamin Ortiz
 git_user: benortiz
 # If you use github, this should be the same as the email
 #  used on Github
-git_email: hello.ben.ortiz@gmail.com
+git_email: benjamin@bluebottlecoffee.com
 
 # GPG Key ID used to sign git commits
-git_signing_key: E25B51456911C00F
+git_signing_key: 3822D2C6F17CA209
 
 homebrew_packages:
   - automake
