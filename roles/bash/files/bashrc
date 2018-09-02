@@ -5,24 +5,6 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 
-############################
-### Brew Bash Completion ###
-############################
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
-
-###########################
-### Git Bash Completion ###
-###########################
-
-if [ -f ~/.bash/git-completion.bash ]; then
-  . ~/.bash/git-completion.bash
-fi
-
-
 #######################
 ### Control History ###
 #######################
@@ -87,16 +69,3 @@ alias gwip='git add . && git commit -m "wip"'
 alias cdbb='cd ~/workspace/bluebottle/'
 alias sb='source $HOME/.bashrc'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
-
-
-################
-### THE FUCK ###
-################
-
-eval "$(thefuck --alias)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

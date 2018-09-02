@@ -2,7 +2,7 @@
 ### Set PATH ###
 ################
 
-export PATH=/usr/local/bin:/usr/local/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:$(if [ `command -v yarn` ]; then yarn global bin; fi):/Users/benortiz/Library/Python/2.7/bin:/Users/benjamin/Library/Python/3.7/bin:$HOME/.cargo/bin:${PATH}
+export PATH=/usr/local/bin:/usr/local/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:$(if [ `command -v yarn` ]; then yarn global bin; fi):$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin:$HOME/.cargo/bin:${PATH}
 
 
 ###############################
@@ -22,6 +22,24 @@ export GIT_EDITOR="vim"
 export GPG_TTY=$(tty)
 
 
+############################
+### Brew Bash Completion ###
+############################
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+
+###########################
+### Git Bash Completion ###
+###########################
+
+if [ -f ~/.bash/git-completion.bash ]; then
+  . ~/.bash/git-completion.bash
+fi
+
+
 ##################
 ### Enable RVM ###
 ##################
@@ -36,3 +54,12 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+################
+### THE FUCK ###
+################
+
+eval "$(thefuck --alias)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
