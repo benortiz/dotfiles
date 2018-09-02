@@ -31,10 +31,9 @@ homebrew_packages:
   - highlight
   - htop-osx
   - hub
-  - karabiner
-  - karabiner-elements
   - macvim
   - mas
+  - ranger
   - redis
   - ripgrep
   - ssh-copy-id
@@ -56,6 +55,8 @@ homebrew_cask_packages:
   - google-chrome
   - gpg-suite
   - imageoptim
+  - karabiner
+  - karabiner-elements
   - postgres # Postgres.app
   - postico
   - slack
