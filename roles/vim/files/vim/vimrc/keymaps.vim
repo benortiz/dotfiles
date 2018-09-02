@@ -38,6 +38,11 @@ nnoremap <silent> <leader>g :GFiles?<CR>
 " Search all files with Ag
 nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 
+" Asyncomplete tab keymaps
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
 " Git Grep and open drawer
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nnoremap <leader>f :Find
