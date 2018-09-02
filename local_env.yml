@@ -8,4 +8,5 @@
     - {role: node, tags: ['node']}
     - {role: ruby, tags: ['ruby']}
     - {role: vim, tags: ['vim', 'dotfiles']}
+    - {role: terminal, tags: ['terminal']}
     - {role: macos, tags: ['macos']}
