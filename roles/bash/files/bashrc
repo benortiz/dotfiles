@@ -52,8 +52,11 @@ export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 ### Alias ###
 #############
 
+cat() {
+  bat "$@";
+}
+
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
-alias cat='bat'
 alias cdbb='cd ~/workspace/bluebottle/'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias g='git status'
