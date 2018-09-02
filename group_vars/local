@@ -44,7 +44,7 @@ homebrew_packages:
   - wifi-password
   - youtube-dl
 
-# Mac Apps to be installed with homebrew-cask
+# Apps to be installed with homebrew-cask
 homebrew_cask_packages:
   - 1password
   - chromedriver
@@ -55,6 +55,7 @@ homebrew_cask_packages:
   - font-hack
   - google-chrome
   - imageoptim
+  - postgres # Postgres.app
   - postico
   - slack
 
