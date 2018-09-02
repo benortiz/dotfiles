@@ -1,0 +1,10 @@
+- name: Symlink bash files
+  file:
+    src: "{{ dotfiles_home }}/roles/bash/files/{{ item }}"
+    dest: "{{ dotfiles_user_home}}/.{{ item }}"
+    state: link
+    force: yes
+  with_items:
+    - "bashrc"
+    - "bash_profile"
+    - "profile"

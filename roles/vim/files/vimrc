@@ -1,0 +1,10 @@
+set nocompatible
+syntax enable
+
+source ~/.vim/vimrc/keymaps.vim
+source ~/.vim/vimrc/plugins.vim
+source ~/.vim/vimrc/settings.vim
+
+if has('gui_running')
+  source ~/.vim/vimrc/macvim.vim
+endif

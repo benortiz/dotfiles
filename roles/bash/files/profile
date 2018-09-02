@@ -1,0 +1,38 @@
+################
+### Set PATH ###
+################
+
+export PATH=/usr/local/bin:/usr/local/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:$(if [ `command -v yarn` ]; then yarn global bin; fi):/Users/benortiz/Library/Python/2.7/bin:/Users/benjamin/Library/Python/3.7/bin:$HOME/.cargo/bin:${PATH}
+
+
+###############################
+### Set Profile Credentials ###
+###############################
+
+[[ -s "$HOME/.profile_credentials" ]] && source "$HOME/.profile_credentials"
+
+
+#################################
+### Set Environment Variables ###
+#################################
+
+export EDITOR="vim"
+export VISUAL="vim"
+export GIT_EDITOR="vim"
+export GPG_TTY=$(tty)
+
+
+##################
+### Enable RVM ###
+##################
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+##################
+### Enable NVM ###
+##################
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

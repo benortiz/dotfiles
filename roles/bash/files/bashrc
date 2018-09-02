@@ -1,0 +1,104 @@
+################################
+### Load common ENV settings ###
+################################
+
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+
+
+############################
+### Brew Bash Completion ###
+############################
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+
+###########################
+### Git Bash Completion ###
+###########################
+
+if [ -f ~/.bash/git-completion.bash ]; then
+  . ~/.bash/git-completion.bash
+fi
+
+
+#######################
+### Control History ###
+#######################
+
+# Set the location of your HISTFILE
+export HISTFILE=$HOME/.bash_history
+
+# Number of lines to keep
+export HISTFILESIZE=1000000000
+
+# Set how many commands to keep in the current session history list
+export HISTSIZE=10000
+
+# Ignore commands that start with a space and do not duplicate.
+export HISTCONTROL=ignoredups:ignorespace
+
+# Set the date format when using `history`
+export HISTTIMEFORMAT="%m/%d/%y %T >> "
+
+
+#########################
+### Show Git Branches ###
+#########################
+
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+
+
+############################
+### Prompt Configuration ###
+############################
+
+export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[32m\] \w\[\033[m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n\A \$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
+
+#############
+### Alias ###
+#############
+
+alias ls='ls -GFh'
+alias woof=$HOME/.bin/woof.py
+alias sserver="python -m SimpleHTTPServer 8000"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias git-open=~/.bin/git-open
+alias g='git status'
+alias gb='git branch'
+alias gl='git log'
+alias glo='git log --oneline'
+alias gap='git add -p'
+alias gd='git diff'
+alias gdm='git diff master'
+alias gcm='git checkout master'
+alias gc-='git checkout -'
+alias grim='git rebase -i master'
+alias gwip='git add . && git commit -m "wip"'
+alias cdbb='cd ~/workspace/bluebottle/'
+alias sb='source $HOME/.bashrc'
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+
+
+###################
+### TRANSFER.SH ###
+###################
+
+transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+
+################
+### THE FUCK ###
+################
+
+eval "$(thefuck --alias)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

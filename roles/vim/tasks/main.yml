@@ -1,0 +1,47 @@
+# Plugin manager
+- name: Makes sure autoload directory exists
+  file: path="{{dotfiles_user_home}}/.vim/autoload" state=directory
+
+- name: Makes sure plugin directory exists
+  file: path="{{dotfiles_user_home}}/.vim/plugged" state=directory
+
+- name: check the current symlink
+  stat: path="{{dotfiles_user_home}}/.vim/{{ item }}"
+  with_items:
+    - "colors"
+    - "ftdetect"
+    - "ftplugin"
+    - "indent"
+    - "vimrc"
+  register: st
+
+- name: remove folders
+  file: path="{{dotfiles_user_home}}/.vim/{{ item.item }}" state=absent
+  when: item.stat.isdir is defined and item.stat.isdir
+  with_items: "{{ st.results }}"
+
+- name: Symlink vim files
+  file:
+    src: "{{ dotfiles_home }}/roles/vim/files/vim/{{ item.item }}"
+    dest: "{{ dotfiles_user_home}}/.vim/{{ item.item }}"
+    state: link
+    force: yes
+  with_items: "{{ st.results }}"
+
+# Configuration
+- name: Check if vimrc exists
+  stat: path="{{dotfiles_user_home}}/.vimrc"
+  register: vimrc_stat
+  failed_when: False
+
+- name: Backup vimrc
+  command: mv ~/.vimrc ~/.vimrc.bak
+  args:
+    creates: "{{dotfiles_user_home}}/.vimrc.bak"
+  when: vimrc_stat.stat.exists
+
+- name: Symlink vimrc
+  file:
+    src: "{{ dotfiles_home }}/roles/vim/files/vimrc"
+    dest: "{{dotfiles_user_home}}/.vimrc"
+    state: link

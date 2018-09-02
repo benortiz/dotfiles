@@ -1,0 +1,65 @@
+# The dotfiles repo is cloned to '~/dotfiles'
+# Local home directory
+dotfiles_user_home: "{{ '~' | expanduser }}"
+# Where your dotfiles live. Probably don't need to change this.
+dotfiles_home: "{{dotfiles_user_home}}/dotfiles"
+
+# Name used in commit messages
+full_name: Benjamin Ortiz
+# Git
+# Github username
+git_user: benortiz
+# If you use github, this should be the same as the email
+#  used on Github
+git_email: hello.ben.ortiz@gmail.com
+
+# GPG Key ID used to sign git commits
+git_signing_key: E25B51456911C00F
+
+homebrew_packages:
+  - bash-completion
+  - bat
+  - cowsay
+  - ctop
+  - curl
+  - diff-so-fancy
+  - docker-clean
+  - fzf
+  - grip
+  - heroku/brew/heroku
+  - highlight
+  - htop-osx
+  - hub
+  - macvim
+  - redis
+  - ripgrep
+  - ssh-copy-id
+  - terminal-notifier
+  - tldr
+  - wget
+  - wifi-password
+  - youtube-dl
+
+# Mac Apps to be installed with homebrew-cask
+homebrew_cask_packages:
+  - 1password
+  - chromedriver
+  - deckset
+  - docker
+  - dropbox
+  - flux
+  - font-hack
+  - google-chrome
+  - imageoptim
+  - postico
+  - slack
+
+# Mac-App-Store-only apps to be installed with mas
+# Use App IDs found with `mas search <name>`
+mas_packages:
+  # - 585829637  # Todoist
+  - 540348655  # Monosnap
+  # - 409203825  # Numbers
+  # - 668208984  # Giphy capture
+
+# ruby_global_gems:
