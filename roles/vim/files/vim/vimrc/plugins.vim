@@ -166,19 +166,6 @@ call plug#begin('~/.vim/plugged')
   runtime macros/matchit.vim
 
 
-  " Autocomplete
-  " ============================================================================
-
-  " ASYNCOMPLETE: Autocomplete asyncronously
-  Plug 'prabirshrestha/asyncomplete.vim'
-
-  " ASYNCOMPLETE_BUFFER: Use open buffers as a source.
-  Plug 'prabirshrestha/asyncomplete-buffer.vim'
-
-  " ASYNCOMPLETE_OMNI: Use built-in omni completion as a source.
-  Plug 'yami-beta/asyncomplete-omni.vim'
-
-
   " Plugins
   " ============================================================================
 
