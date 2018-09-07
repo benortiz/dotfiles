@@ -18,6 +18,10 @@ highlight Search    guifg=#E5C07B guibg=#5C6370 ctermfg=180 ctermbg=59
 " especially in the terminal
 set lazyredraw
 
+" Tells vim that we're on a fast terminal, so give it more characters to render
+" at once. This should improve rendering performance.
+set ttyfast
+
 " Show absolute numbering
 set number
 " Hide cursor hightlight line
@@ -82,8 +86,8 @@ set wildignore=*/node_modules/*,*/tmp/*
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" show context above/below cursorline
-set scrolloff=3
+" Keep the buffer centered around the cursor
+set scrolloff=999
 
 
 " Vim Application Settings
