@@ -17,8 +17,12 @@ git_email: hello.ben.ortiz@gmail.com
 git_signing_key: E25B51456911C00F
 
 homebrew_packages:
+  - automake
   - bash-completion
   - bat
+  - cloc
+  - cmake
+  - coreutils
   - cowsay
   - ctop
   - curl
@@ -26,27 +30,39 @@ homebrew_packages:
   - docker-clean
   - fd
   - fzf
-  - grip
+  - gcc
+  - go
+  - grip                  # Display github flavord markdown
   - heroku/brew/heroku
   - highlight
-  - htop-osx
+  - htop
   - hub
+  - imagemagick
   - macvim
   - mas
+  - noti
   - ranger
   - redis
   - ripgrep
   - ssh-copy-id
+  - siege
   - terminal-notifier
+  - thefuck
   - tldr
   - wget
   - wifi-password
+  - yarn
   - youtube-dl
 
 # Apps to be installed with homebrew-cask
 homebrew_cask_packages:
   - 1password
+  - amethyst
+  - alfred
+  - arq
+  - bartender
   - chromedriver
+  - cleanmymac
   - deckset
   - docker
   - dropbox
@@ -55,18 +71,35 @@ homebrew_cask_packages:
   - google-chrome
   - gpg-suite
   - imageoptim
+  - itsycal
+  - jadengeller-helium
   - karabiner
   - karabiner-elements
+  - keka
+  - keycastr
+  - ngrok
+  - obs
+  - paparazzi
   - postgres # Postgres.app
   - postico
+  - qlcolorcode
+  - qlimagesize
+  - qlmarkdown
+  - qlstephen
+  - quicklook-json
   - slack
+  - spectacle
+  - soundlfower
+  - tripmode
 
 # Mac-App-Store-only apps to be installed with mas
 # Use App IDs found with `mas search <name>`
 mas_packages:
-  # - 585829637  # Todoist
+  - 937984704  # Amphetamine
   - 540348655  # Monosnap
-  # - 409203825  # Numbers
-  # - 668208984  # Giphy capture
-
-# ruby_global_gems:
+  - 1006739057 # NetTunes
+  - 1303222628 # Paprika
+  - 407963104  # Pixelmator
+  - 866773894  # Quiver
+  - 507257563  # Sip
+  - 497799835  # Xcode
