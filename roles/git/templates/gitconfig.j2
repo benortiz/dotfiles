@@ -26,9 +26,9 @@
         cb = "!git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
 
         # Archive
-        archive-branch  = "! f() { git tag archive/$1 $1 && git branch -D $1; }; f"
-        archive-restore = "! f() { git checkout -b $1 archive/$1 && git tag -d archive/$1; }; f"
-        archive-list    = "! f() { git tag | grep '^archive/'; }; f"
+        archive-branch  = !git tag archive/$1 $1 && git branch -D $1
+        archive-restore = !git checkout -b $1 archive/$1 && git tag -d archive/$1
+        archive-list    = !git tag | grep '^archive/'
 [color]
         diff = auto
         status = auto
