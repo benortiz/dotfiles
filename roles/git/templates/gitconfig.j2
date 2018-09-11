@@ -9,39 +9,26 @@
 [credential]
         helper = osxkeychain
 [alias]
-        a = add
-        st = status
-        s = status
         co = checkout
         cob = checkout -b
-        c = checkout
-        ci = commit
-        noff = merge --no-ff
-        plr = pull --rebase
         amend = commit --amend
-        wip = commit --no-verify -am "WIP"
-        br = branch
 
         please = push --force-with-lease
         publish = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-        # publish current branch
-        publish = "!f() { git push -u ${1:-origin} $(git rev-parse --abbrev-ref HEAD); }; f"
 
         # http://gggritso.com/human-git-aliases
         unstage = reset -q HEAD --
         discard = checkout --
         uncommit = reset --mixed HEAD~
 
-        l = log --graph --decorate --oneline --abbrev-commit --all
-        h = log --graph --decorate --oneline --abbrev-commit
-
         url = "!f() { sha=$(git rev-parse ${1:-HEAD}); hub browse -u -- commit/$sha; }; f"
         # Copy current branch name to clipboard (macOS only)
         cb = "!git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
 
-        remote-branches = "!f() { git ls-remote --heads ${1:origin} | sed 's?.*refs/heads/??'; }; f "
-
-        sub = submodule
+        # Archive
+        archive-branch  = "! f() { git tag archive/$1 $1 && git branch -D $1; }; f"
+        archive-restore = "! f() { git checkout -b $1 archive/$1; }; f"
+        archive-list    = "! f() { git tag | grep '^archive/'; }; f"
 [color]
         diff = auto
         status = auto
