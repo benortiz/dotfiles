@@ -41,7 +41,7 @@ nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 " Git Grep and open drawer
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nnoremap <leader>f :Find
-nnoremap <leader>F :Find "<C-R><C-W>"
+nnoremap <leader>F :Find <C-R><C-W>
 
 " command! -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 " nnoremap <leader>f :Ggr
