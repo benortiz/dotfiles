@@ -32,9 +32,6 @@ set textwidth=80
 " Make the column line visible
 set colorcolumn=+1
 
-" Clears the search highlight
-nnoremap <silent> ,c :nohlsearch<CR>
-
 
 " File Nav
 " ==============================================================================

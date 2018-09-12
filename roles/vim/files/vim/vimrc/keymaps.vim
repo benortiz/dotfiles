@@ -58,3 +58,6 @@ nnoremap <leader>d odebugger;<esc>
 nnoremap <leader>D Odebugger;<esc>
 nnoremap <leader>p obinding.pry<esc>
 nnoremap <leader>P Obinding.pry<esc>
+
+" Clears the search highlight
+nnoremap <silent> ,c :nohlsearch<CR>
