@@ -53,6 +53,8 @@
         user = {{ git_user }}
 [commit]
         gpgsign = true
+        template = ~/.gitmessage
+        cleanup = strip
 [gpg]
         program = /usr/local/MacGPG2/bin/gpg2
 [rerere]
