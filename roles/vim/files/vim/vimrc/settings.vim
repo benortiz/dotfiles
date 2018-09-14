@@ -83,8 +83,8 @@ set wildignore=*/node_modules/*,*/tmp/*
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Keep the buffer centered around the cursor
-set scrolloff=999
+" Offset the edge of the buffer from the cursor
+set scrolloff=20
 
 
 " Vim Application Settings
