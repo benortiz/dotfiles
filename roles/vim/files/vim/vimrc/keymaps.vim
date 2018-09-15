@@ -61,3 +61,6 @@ nnoremap <leader>P Obinding.pry<esc>
 
 " Clears the search highlight
 nnoremap <silent> ,c :nohlsearch<CR>
+
+" List contents of all registers (that typically contain pasteable text).
+nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
