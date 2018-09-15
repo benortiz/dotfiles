@@ -4,6 +4,7 @@ syntax enable
 source ~/.vim/vimrc/keymaps.vim
 source ~/.vim/vimrc/plugins.vim
 source ~/.vim/vimrc/settings.vim
+source ~/.vim/vimrc/functions.vim
 
 if has('gui_running')
   source ~/.vim/vimrc/macvim.vim
