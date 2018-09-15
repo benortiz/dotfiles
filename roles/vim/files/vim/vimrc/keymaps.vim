@@ -1,10 +1,16 @@
 let mapleader = ' '
 
-" Save the current file
-nnoremap <leader>w :w<CR>
+" Handy ways to insert debuggers
+nnoremap <leader>d odebugger;<esc>
+nnoremap <leader>D Odebugger;<esc>
+nnoremap <leader>p obinding.pry<esc>
+nnoremap <leader>P Obinding.pry<esc>
 
-" Close the current file
-nnoremap <leader>q :q<CR>
+" Clears the search highlight
+nnoremap <silent> ,c :nohlsearch<CR>
+
+" Buffers
+" ==============================================================================
 
 " Buffer Navigation
 nnoremap <C-h> <C-w>h
@@ -17,33 +23,35 @@ nnoremap ˙ :bp<CR>
 nnoremap ¬ :bn<CR>
 nnoremap <leader>; :bd<CR> " delete buffer
 
-" don't copy the contents of an overwritten selection.
-vnoremap p "_dP
+" Launch FZF Buffers
+nnoremap <silent> <leader>b :Buffers<CR>
 
-" <shift>y should behave the same way as <shift>d and <shift>c
-nnoremap <silent> Y y$
 
-nnoremap <silent> <leader>t :Vexplore .<CR>
-nnoremap <silent> <leader>T :Vexplore<CR>
+" File Navigation
+" ==============================================================================
+
+" Ripgrep and open the drawer
+nnoremap <leader>f :Find
+nnoremap <leader>F :Find <C-R><C-W>
 
 " Launch FZF
 nnoremap <silent> <leader>a :FZF<CR>
 
-" Launch FZF Buffers
-nnoremap <silent> <leader>b :Buffers<CR>
-
 " Search files that have been modified
 nnoremap <silent> <leader>g :GFiles?<CR>
 
-" Search all files with Ag
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap <silent> <leader>t :Vexplore .<CR>
+nnoremap <silent> <leader>T :Vexplore<CR>
 
-nnoremap <leader>f :Find
-nnoremap <leader>F :Find <C-R><C-W>
 
-" command! -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
-" nnoremap <leader>f :Ggr
-" nnoremap <leader>F :Ggr "<C-R><C-W>"
+" Vim Editing
+" ==============================================================================
+
+" Save the current file
+nnoremap <leader>w :w<CR>
+
+" Close the current file
+nnoremap <leader>q :q<CR>
 
 " Source vimrc
 nnoremap <silent><leader>s :source ~/.vimrc<CR>
@@ -51,14 +59,15 @@ nnoremap <silent><leader>s :source ~/.vimrc<CR>
 " Reload the current file
 nnoremap <silent><leader>r :e%<CR>
 
-" Handy ways to insert debuggers
-nnoremap <leader>d odebugger;<esc>
-nnoremap <leader>D Odebugger;<esc>
-nnoremap <leader>p obinding.pry<esc>
-nnoremap <leader>P Obinding.pry<esc>
 
-" Clears the search highlight
-nnoremap <silent> ,c :nohlsearch<CR>
+" Yank/Paste
+" ==============================================================================
+
+" don't copy the contents of an overwritten selection.
+vnoremap p "_dP
+
+" <shift>y should behave the same way as <shift>d and <shift>c
+nnoremap <silent> Y y$
 
 " List contents of all registers (that typically contain pasteable text).
 nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
