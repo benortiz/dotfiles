@@ -147,6 +147,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-rvm'
 
 
+  " Enhance
+  " ============================================================================
+
+  " MUNDO: Visualize the undo tree
+  Plug 'simnalamburt/vim-mundo'
+
   " Text Navigation
   " ============================================================================
 
