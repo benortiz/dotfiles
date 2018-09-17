@@ -38,7 +38,7 @@ nnoremap <leader>f :Find<space>
 nnoremap <leader>F :Find <C-R><C-W>
 
 " Launch FZF
-nnoremap <silent> <leader>a :FZF<CR>
+nnoremap <silent> <leader>a :Files<CR>
 
 " Search files that have been modified
 nnoremap <silent> <leader>g :GFiles?<CR>
