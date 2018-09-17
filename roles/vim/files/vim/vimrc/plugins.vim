@@ -87,7 +87,6 @@ call plug#begin('~/.vim/plugged')
     " Take up less space
     let g:fzf_layout = { 'down': '~20%' }
     " Pay attention to gitignore, but include hidden files
-    " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
     let $FZF_DEFAULT_COMMAND = 'rg --files  --hidden --follow --glob "!.git/*"'
     let g:fzf_colors =
           \ { 'fg':      ['fg', 'Normal'],
