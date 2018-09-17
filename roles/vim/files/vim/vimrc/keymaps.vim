@@ -34,7 +34,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 " ==============================================================================
 
 " Ripgrep and open the drawer
-nnoremap <leader>f :Find
+nnoremap <leader>f :Find<space>
 nnoremap <leader>F :Find <C-R><C-W>
 
 " Launch FZF
