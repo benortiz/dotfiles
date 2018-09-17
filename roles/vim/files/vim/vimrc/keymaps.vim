@@ -11,17 +11,20 @@ nnoremap <silent> ,c :nohlsearch<CR>
 
 " Buffers
 " ==============================================================================
+" I use mostly vertical splits, so the most important thing for me is to be able
+" to move horizontally between splits. I mapped ctrl-j and ctrl-k to cycle
+" through buffers since I'm not navigating vertically between splits.
 
 " Buffer Navigation
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Buffer switching
-nnoremap ˙ :bp<CR>
-nnoremap ¬ :bn<CR>
-nnoremap <leader>; :bd<CR> " delete buffer
+nnoremap <C-j> :bn<CR>
+nnoremap <C-k> :bp<CR>
+
+" close buffer
+nnoremap <leader>; :bd<CR>
 
 " Launch FZF Buffers
 nnoremap <silent> <leader>b :Buffers<CR>
