@@ -44,6 +44,7 @@ homebrew_packages:
   - ranger
   - redis
   - ripgrep
+  - rust
   - ssh-copy-id
   - siege
   - terminal-notifier
