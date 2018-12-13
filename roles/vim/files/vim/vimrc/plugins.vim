@@ -128,6 +128,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'                    " Ruby syntax and indentation
   Plug 'onemanstartup/vim-slim'               " Slim syntax (forked)
   Plug 'pangloss/vim-javascript'              " Javascript highlighting
+  Plug 'elmcast/elm-vim'                      " Elm syntax and more
+  " {{{
+    let g:elm_setup_keybindings = 0
+  " }}}
 
   " ALE: General purpose linter
   Plug 'w0rp/ale'
