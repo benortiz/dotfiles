@@ -146,16 +146,13 @@ call plug#begin('~/.vim/plugged')
     let g:ale_fixers = { 'ruby': ['rubocop'], 'javascript': ['eslint']}
   " }}}
 
-  " RVM: RVM support for MacVim
-  " Needed to make Ale and Rubocop work with MacVim
-  Plug 'tpope/vim-rvm'
 
-
-  " Enhance
+  " Enhancements
   " ============================================================================
 
   " MUNDO: Visualize the undo tree
   Plug 'simnalamburt/vim-mundo'
+
 
   " Text Navigation
   " ============================================================================
