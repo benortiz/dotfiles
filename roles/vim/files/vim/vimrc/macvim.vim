@@ -14,6 +14,3 @@ augroup ActiveCursorLine
     autocmd WinEnter * set cursorline
     autocmd WinLeave * set nocursorline
 augroup END
-
-" Run RVM automatically to set the correct Ruby context in MacVim
-autocmd DirChanged * Rvm
