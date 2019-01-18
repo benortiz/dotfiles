@@ -153,6 +153,13 @@ call plug#begin('~/.vim/plugged')
   " MUNDO: Visualize the undo tree
   Plug 'simnalamburt/vim-mundo'
 
+  " GIST: Manipulate gists
+  Plug 'mattn/webapi-vim'
+  Plug 'mattn/gist-vim'
+  " {{{
+    let g:gist_post_private = 1
+  " }}}
+
 
   " Text Navigation
   " ============================================================================
