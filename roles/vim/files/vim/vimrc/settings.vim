@@ -42,6 +42,9 @@ set wildmode=longest:list,full
 " visual autocomplete for command menu
 set wildmenu
 
+" Change buffers without saving
+set hidden
+
 " Turn netrw into NerdTree
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3

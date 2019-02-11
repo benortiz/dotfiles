@@ -75,6 +75,7 @@ call plug#begin('~/.vim/plugged')
   " AUTOPAIRS: Close quotes and backets automatically
   Plug 'jiangmiao/auto-pairs'
 
+
   " File Nav
   " ============================================================================
 
