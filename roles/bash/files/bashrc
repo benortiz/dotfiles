@@ -28,7 +28,7 @@ export HISTCONTROL=ignoredups:ignorespace
 export HISTTIMEFORMAT="%m/%d/%y %T >> "
 
 # Store history immediately
-export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND='history -a;history -n'
 
 
 #########################
