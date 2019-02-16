@@ -161,6 +161,16 @@ call plug#begin('~/.vim/plugged')
     let g:gist_post_private = 1
   " }}}
 
+  Plug 'christoomey/vim-tmux-navigator'
+
+  Plug 'Alok/notational-fzf-vim'
+  " {{{
+    let g:nv_search_paths = ['~/Dropbox/nvAlt']
+    let g:nv_create_note_key = 'ctrl-w'
+    let g:nv_create_note_window = 'edit'
+    let g:nv_use_short_pathnames = 1
+  " }}}
+
 
   " Text Navigation
   " ============================================================================

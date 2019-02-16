@@ -15,13 +15,9 @@ nnoremap <silent> ,c :nohlsearch<CR>
 " to move horizontally between splits. I mapped ctrl-j and ctrl-k to cycle
 " through buffers since I'm not navigating vertically between splits.
 
-" Buffer Navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " Buffer switching
-nnoremap <C-j> :bn<CR>
-nnoremap <C-k> :bp<CR>
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
 
 " close buffer
 nnoremap <leader>; :bd<CR>
