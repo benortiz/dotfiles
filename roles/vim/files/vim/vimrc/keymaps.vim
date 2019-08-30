@@ -1,13 +1,36 @@
 let mapleader = ' '
 
-" Handy ways to insert debuggers
-nnoremap <leader>d odebugger;<esc>
-nnoremap <leader>D Odebugger;<esc>
-nnoremap <leader>p obinding.pry<esc>
-nnoremap <leader>P Obinding.pry<esc>
+nnoremap <silent> gt :call ToggleTodo()<CR>
+nnoremap <silent> gT o- [ ]<Space>
+inoremap <C-t> - [ ]<Space>
 
 " Clears the search highlight
 nnoremap <silent> ,c :nohlsearch<CR>
+
+nnoremap g4 $
+nnoremap g5 %
+nnoremap g6 ^
+
+nnoremap <silent> g8 :norm! *N<CR>
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+nnoremap gb :ls<CR>:b<Space>
+
+vnoremap <C-g> "*y
+vnoremap 4 $ "
+
+" Open a PR for the current line
+" https://github.com/benwainwright/dotfiles/blob/4cd643437180f72e1edcb566a3b5b3d9565e0fac/config/vim/vimrc.dotfile#L119-L133
+nnoremap <Leader>pr :call OpenLinePr()<cr>
+
+" Go to next linting error
+nnoremap ]a :ALENextWrap<CR>
+nnoremap [a :ALEPreviousWrap<CR>
 
 " Buffers
 " ==============================================================================

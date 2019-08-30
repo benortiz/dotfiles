@@ -58,6 +58,12 @@ call plug#begin('~/.vim/plugged')
   " SURROUND: For switching quote types and other surrounding things
   Plug 'tpope/vim-surround'
 
+  " SPLITJOIN: Transform between single/multi-line code
+  Plug 'AndrewRadev/splitjoin.vim'
+
+  " ABOLISH: Working with variants of a word
+  Plug 'tpope/vim-abolish'
+
 
   " Auto Formatting
   " ============================================================================
@@ -118,9 +124,13 @@ call plug#begin('~/.vim/plugged')
     let g:gitgutter_sign_modified = '•'
     let g:gitgutter_sign_removed = '•'
   " }}}
+  set signcolumn=yes
 
   " FUGITIVE: Git integration like git grep and showing the current branch
   Plug 'tpope/vim-fugitive'
+
+  " RHUBARB: Github integration with Fugitive
+  Plug 'tpope/vim-rhubarb'
 
 
   " Syntax
@@ -129,6 +139,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'                    " Ruby syntax and indentation
   Plug 'onemanstartup/vim-slim'               " Slim syntax (forked)
   Plug 'pangloss/vim-javascript'              " Javascript highlighting
+  Plug 'jparise/vim-graphql'                  " GraphQL highlighting, dependent on pangloss
   Plug 'mxw/vim-jsx'                          " JSX Highlighting, dependent on pangloss
   Plug 'elmcast/elm-vim'                      " Elm syntax and more
   " {{{
@@ -142,10 +153,15 @@ call plug#begin('~/.vim/plugged')
     let g:ale_lint_on_text_changed = 'never'  " Turn off linting while editing
     let g:ale_lint_on_save = 1                " Default: lint only when saving
     let g:ale_set_balloons = 0
+    let g:ale_ruby_rubocop_executable = 'bundle'
+    let g:ale_javascript_eslint_executable = 'npx eslint'
     let g:ale_javascript_eslint_options = '-c ~/workspace/style/.eslintrc'
     " let g:ale_fix_on_save = 1
     let g:ale_fixers = { 'ruby': ['rubocop'], 'javascript': ['eslint']}
   " }}}
+
+  " RENAME: Rename the current file
+  Plug 'danro/rename.vim'
 
 
   " Enhancements
@@ -165,12 +181,15 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'Alok/notational-fzf-vim'
   " {{{
-    let g:nv_search_paths = ['~/Dropbox/nvAlt']
+    let g:nv_search_paths = ['~/Dropbox/notebooks']
+    let g:nv_ignore_pattern = ['*.plist', 'RecentItems.txt']
     let g:nv_create_note_key = 'ctrl-w'
     let g:nv_create_note_window = 'edit'
     let g:nv_use_short_pathnames = 1
   " }}}
 
+  " OBSESSION: Persist session
+  Plug 'tpope/vim-obsession'
 
   " Text Navigation
   " ============================================================================
@@ -187,9 +206,8 @@ call plug#begin('~/.vim/plugged')
   " RUBY TEXTOBJ: Select ruby blocks and manipulate them
   Plug 'nelstrom/vim-textobj-rubyblock'
 
-  " Needed for user blocks
-  runtime macros/matchit.vim
-
+  " Required for text objects, enables %
+  packadd! matchit
 
   " Plugins
   " ============================================================================

@@ -56,6 +56,7 @@ cat() {
   bat "$@";
 }
 
+alias be='bundle exec'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias cdbb='cd ~/workspace/bluebottle/'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

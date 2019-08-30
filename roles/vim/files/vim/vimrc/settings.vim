@@ -4,9 +4,9 @@
 colorscheme onedark
 
 " Invert Search and IncSearch from OneDark
-" yellow        = { "gui": "#E5C07B", "cterm": "180" }
-" black         = { "gui": "#282C34", "cterm": "235" }
-" comment_grey  = { "gui": "#5C6370", "cterm": "59"  }
+" yellow        = { 'gui': '#E5C07B', 'cterm': '180' }
+" black         = { 'gui': '#282C34', 'cterm': '235' }
+" comment_grey  = { 'gui': '#5C6370', 'cterm': '59'  }
 
 " fg black, bg yellow
 highlight IncSearch guifg=#282C34 guibg=#E5C07B ctermfg=235 ctermbg=180
