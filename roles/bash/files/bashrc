@@ -74,3 +74,5 @@ alias gwip='git add . && git commit -m "wip"'
 alias ls='ls -GFh'
 alias sb='source $HOME/.bashrc'
 alias sserver="python -m SimpleHTTPServer 8000"
+alias vimrc="vim ~/.vimrc"
+alias bashrc="vim ~/.bashrc"

@@ -19,8 +19,8 @@ call plug#begin('~/.vim/plugged')
   " Appearance
   " ============================================================================
 
-  " ONEDARK: Color scheme from Atom
-  Plug 'joshdick/onedark.vim'
+  " Dracula: It's a color scheme?
+  Plug 'dracula/vim', { 'as': 'dracula' }
 
   " AIRLINE: Statusbar
   Plug 'vim-airline/vim-airline'

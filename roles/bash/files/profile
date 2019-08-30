@@ -26,8 +26,15 @@ export GPG_TTY=$(tty)
 ### Brew Bash Completion ###
 ############################
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+HOMEBREW_PREFIX=$(brew --prefix)
+if type brew &>/dev/null; then
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "$COMPLETION" ]] && source "$COMPLETION"
+    done
+  fi
 fi
 
 
@@ -51,12 +58,6 @@ eval "$(thefuck --alias)"
 ### ASDF ###
 ############
 
-if [ -f ~/.asdf/asdf.sh ]; then
-  . ~/.asdf/asdf.sh
-fi
-
-if [ -f ~/.asdf/completions/asdf.bash ]; then
-  . ~/.asdf/completions/asdf.bash
-fi
+. $(brew --prefix asdf)/asdf.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
