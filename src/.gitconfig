@@ -1,5 +1,5 @@
 [hub]
-  protocol = https
+  protocol = ssh
 [user]
   name = Benjamin Ortiz
   email = hello.ben.ortiz@gmail.com
