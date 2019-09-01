@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+# Cosmic Toaster Clipboard :tm:
+# On a headless server without a 'real' clipboard, this temp file
+# and simple bash function operate as a poor-mans clipboard. Can
+# transfer textual information between processes by reading/writing
+# from stdin/stdout
+buf=$(command cat "$@")
+echo "$buf" > $CT_CLIPBOARD;
