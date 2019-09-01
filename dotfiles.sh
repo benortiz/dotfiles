@@ -26,11 +26,9 @@ CHECK_WGET_TYPE_AND_ENCODING='no'
 #####
 # External utilities
 
-DIFF=${DOTFILES_DIFF:-$(command -v diff)}
 GIT=${DOTFILES_GIT:-$(command -v git)}
 LN=${DOTFILES_LN:-$(command -v ln)}
 MV=${DOTFILES_MV:-$(command -v mv)}
-PATCH=${DOTFILES_PATCH:-$(command -v patch)}
 SED=${DOTFILES_SED:-$(command -v sed)}
 RM=${DOTFILES_RM:-$(command -v rm)}
 RSYNC=${DOTFILES_RSYNC:-$(command -v rsync)}
@@ -258,9 +256,9 @@ function link_file()
 		fi
 	fi
 	if [ "${DRY_RUN}" = 'yes' ]; then
-		echo "link ${TARGET}/${FILE} to ${DOTFILES_DIR}/${REPO}/patched-src/${FILE}"
+		echo "link ${TARGET}/${FILE} to ${DOTFILES_DIR}/${REPO}/src/${FILE}"
 	else
-		SOURCE="${DOTFILES_DIR}/${REPO}/patched-src/${FILE}"
+		SOURCE="${DOTFILES_DIR}/${REPO}/src/${FILE}"
 		echo -n 'link '
 		"${LN}" ${LINK_OPTS} "${SOURCE}" "${TARGET}/${FILE}" || return 1
 	fi
@@ -421,145 +419,6 @@ function fetch()
 }
 
 ###
-# diff command
-
-COMMANDS+=('diff')
-
-function diff_help()
-{
-	echo 'Show differences between targets and dotfiles repositories.'
-	if [ "${1}" = '--one-line' ]; then return; fi
-
-	cat <<-EOF
-
-		usage: $0 ${COMMAND} [--removed|--local-patch] [REPO]
-
-		Where 'REPO' is the name the dotfiles repository to query.  If it
-		is not given, all repositories will be queried.
-
-		By default, ${COMMAND} will list differences between files that
-		exist in both the target location and the dotfiles repository (as
-		a patch that could be applied to the dotfiles source).
-
-		With the '--removed' option, ${COMMAND} will list files that
-		should be removed from the dotfiles source in order to match the
-		target.
-
-		With the '--local-patch' option, ${COMMAND} will create files in
-		list files that should be removed from the dotfiles source in
-		order to match the target.
-	EOF
-}
-
-function diff()
-{
-	MODE='standard'
-	while [ "${1::2}" = '--' ]; do
-		case "${1}" in
-			'--removed')
-				MODE='removed'
-				;;
-			'--local-patch')
-				MODE='local-patch'
-				;;
-			*)
-				echo "ERROR: invalid option to diff (${1})" >&2
-				return 1
-			esac
-		shift
-	done
-	# multi-repo case handled in main() by run_on_all_repos()
-	REPO=$(nonempty_option 'diff' 'REPO' "${1}") || return 1
-	maxargs 'diff' 1 "${@}" || return 1
-
-	if [ "${MODE}" = 'local-patch' ]; then
-		mkdir -p "${REPO}/local-patch" || return 1
-
-		exec 3<&1     # save stdout to file descriptor 3
-		echo "save local patches to ${REPO}/local-patch/000-local.patch"
-		exec 1>"${REPO}/local-patch/000-local.patch"  # redirect stdout
-		diff "${REPO}"
-		exec 1<&3     # restore old stdout
-		exec 3<&-     # close temporary fd 3
-
-		exec 3<&1     # save stdout to file descriptor 3
-		echo "save local removed to ${REPO}/local-patch/000-local.remove"
-		exec 1>"${REPO}/local-patch/000-local.remove"  # redirect stdout
-		diff --removed "${REPO}"
-		exec 1<&3     # restore old stdout
-		exec 3<&-     # close temporary fd 3
-		return
-	fi
-
-	while read FILE; do
-		if [ "${MODE}" = 'removed' ]; then
-			if [ ! -e "${TARGET}/${FILE}" ]; then
-				echo "${FILE}"
-			fi
-		elif [ -f "${TARGET}/${FILE}" ]; then
-			(cd "${REPO}/src" && "${DIFF}" -u "${FILE}" "${TARGET}/${FILE}")
-		fi
-	done <<-EOF
-		$(list_files "${REPO}/src")
-	EOF
-}
-
-###
-# patch command
-
-COMMANDS+=('patch')
-
-function patch_help()
-{
-	echo 'Patch a fresh checkout with local adjustments.'
-	if [ "${1}" = '--one-line' ]; then return; fi
-
-	cat <<-EOF
-
-		usage: $0 ${COMMAND} [REPO]
-
-		Where 'REPO' is the name the dotfiles repository to patch.  If it
-		is not given, all repositories will be patched.
-	EOF
-}
-
-function patch()
-{
-	# multi-repo case handled in main() by run_on_all_repos()
-	REPO=$(nonempty_option 'patch' 'REPO' "${1}") || return 1
-	maxargs 'patch' 1 "${@}" || return 1
-
-	echo "copy clean checkout into ${REPO}/patched-src"
-	"${RSYNC}" -avz --delete "${REPO}/src/" "${REPO}/patched-src/" || return 1
-
-	# apply all the patches in local-patch/
-	for FILE in "${REPO}/local-patch"/*.patch; do
-		if [ -f "${FILE}" ]; then
-			echo "apply ${FILE}"
-			pushd "${REPO}/patched-src/" > /dev/null || return 1
-			"${PATCH}" -p1 < "../../${FILE}" || return 1
-			popd > /dev/null || return 1
-		fi
-	done
-
-	# remove any files marked for removal in local-patch
-	for REMOVE in "${REPO}/local-patch"/*.remove; do
-		if [ -f "${REMOVE}" ]; then
-			echo "apply ${FILE}"
-			while read LINE; do
-				if [ -z "${LINE}" ] || [ "${LINE:0:1}" = '#' ]; then
-					continue  # ignore blank lines and comments
-				fi
-				if [ -e "${REPO}/patched-src/${LINE}" ]; then
-					echo "remove ${LINE}"
-					"${RM}" -rf "${REPO}/patched-src/${LINE}"
-				fi
-			done < "${REMOVE}"
-		fi
-	done
-}
-
-###
 # link command
 
 COMMANDS+=('link')
@@ -629,7 +488,7 @@ function link()
 	# multi-repo case handled in main() by run_on_all_repos()
 	REPO=$(nonempty_option 'link' 'REPO' "${1}") || return 1
 	maxargs 'link' 1 "${@}" || return 1
-	DOTFILES_SRC="${DOTFILES_DIR}/${REPO}/patched-src"
+	DOTFILES_SRC="${DOTFILES_DIR}/${REPO}/src"
 
 	while read FILE; do
 		BACKUP="${BACKUP_OPT}"
@@ -690,10 +549,9 @@ function disconnect()
 	# multi-repo case handled in main() by run_on_all_repos()
 	REPO=$(nonempty_option 'disconnect' 'REPO' "${1}") || return 1
 	maxargs 'disconnect' 1 "${@}" || return 1
-	DOTFILES_SRC="${DOTFILES_DIR}/${REPO}/patched-src"
+	DOTFILES_SRC="${DOTFILES_DIR}/${REPO}/src"
 
-	# See if we've constructed any patched source files that might be
-	# possible link targets
+	# See if we have possible link targets
 	if [ ! -d "${DOTFILES_SRC}" ]; then
 		echo 'no installed dotfiles to disconnect'
 		return
@@ -713,7 +571,7 @@ function disconnect()
 			"${MV}" "${DOTFILES_SRC}/${FILE}" "${TARGET}/${FILE}"
 		fi
 	done <<-EOF
-		$(list_files "${REPO}/patched-src")
+		$(list_files "${REPO}/src")
 	EOF
 
 	if [ "${BASHRC}" == 'yes' ]; then
@@ -748,7 +606,7 @@ COMMANDS+=('update')
 
 function update_help()
 {
-	echo 'Utility command that runs fetch, patch, and link.'
+	echo 'Utility command that runs fetch and link.'
 	if [ "${1}" = '--one-line' ]; then return; fi
 
 	cat <<-EOF
@@ -758,7 +616,7 @@ function update_help()
 		Where 'REPO' is the name the dotfiles repository to update.
 		If it is not given, all repositories will be updateed.
 
-		Run 'fetch', 'patch', and 'link' sequentially on each repository
+		Run 'fetch' and 'link' sequentially on each repository
 		to bring them in sync with the central repositories.  Keeps track
 		of the last update time to avoid multiple fetches in the same
 		week.
@@ -788,7 +646,6 @@ function update()
 		"${RM}" -f "${REPO}"/updated.* || return 1
 		"${TOUCH}" "${UPDATE_FILE}" || return 1
 		fetch "${REPO}" || return 1
-		patch "${REPO}" || return 1
 		link ${LINK_OPTS} "${REPO}" || return 1
 		echo "${REPO} dotfiles updated"
 	fi

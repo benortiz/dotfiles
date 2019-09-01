@@ -1,5 +1,0 @@
-patched-src/*
-local-patch/*
-updated.*
-!patched-src/.keep
-!local-patch/.keep
