@@ -16,6 +16,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+set laststatus=0
+set ruler rulerformat=%25(%=%<%F%m\ \›\ %l/%L:%v%)
 set scrolloff=20
 
 set textwidth=80
