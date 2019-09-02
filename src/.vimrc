@@ -64,18 +64,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'                 " Git status in the signcolumn
 Plug 'christoomey/vim-tmux-navigator'					" Seamless tmux/vim movement
 Plug 'dracula/vim', { 'as': 'dracula' }				" Colorscheme
+Plug 'duggiefresh/vim-easydir'                " Create dir when saving new file
 Plug 'glts/vim-textobj-comment'               " Define comment targets
 Plug 'kana/vim-textobj-user'                  " Dependency of rubyblock
 Plug 'mattn/webapi-vim'                       " Dependency of gist-vim
 Plug 'mattn/gist-vim'                         " Manage gists
 Plug 'mbbill/undotree'                        " Undo history visualizer
 Plug 'nelstrom/vim-textobj-rubyblock'         " Define ruby targets
+Plug 'tommcdo/vim-lion'                       " Align around a character
 Plug 'tpope/vim-commentary'										" Comment movements
-Plug 'tpope/vim-surround'                     " Movements based on pairs
-Plug 'tpope/vim-repeat'                       " Plugins are repeatable with .
+Plug 'tpope/vim-eunuch'                       " Helpful unix cli helpers
 Plug 'tpope/vim-fugitive'                     " Git integration
-Plug 'tpope/vim-rhubarb'                      " GitHub integration
 Plug 'tpope/vim-obsession'                    " Auto-persist vim sessions
+Plug 'tpope/vim-repeat'                       " Plugins are repeatable with .
+Plug 'tpope/vim-rhubarb'                      " GitHub integration
+Plug 'tpope/vim-surround'                     " Movements based on pairs
 Plug 'tpope/vim-unimpaired'                   " New line, url decoding, etc.
 Plug 'w0rp/ale'                               " Linter/fixer
 Plug 'wellle/targets.vim'                     " More surround targets
