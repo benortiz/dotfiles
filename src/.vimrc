@@ -102,8 +102,8 @@ colorscheme dracula
 " Sets Dracula comments to italic
 highlight Comment term=bold cterm=italic ctermfg=4 guifg=Blue
 
-" Source vimrc
 nnoremap <silent> <leader>s :source ~/.vimrc<CR>
+nnoremap <silent> <leader>r :e %<CR>
 nnoremap <silent> ,c :nohlsearch<CR>
 
 nnoremap <silent> [b :bprevious<CR>
