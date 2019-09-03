@@ -1,0 +1,26 @@
+set from      = "hello.ben.ortiz@gmail.com"
+set realname  = "Ben Ortiz"
+set sendmail  = "/usr/bin/msmtp -a personal"
+set mbox      = "+personal/archive"
+set postponed = "+personal/drafts"
+
+color status green default
+
+mailboxes "+personal/inbox"
+mailboxes "+personal/archive"
+mailboxes "+personal/sent"
+mailboxes "+personal/drafts"
+mailboxes "+personal/spam"
+mailboxes "+personal/trash"
+
+macro index y \
+    "<save-message>+personal/archive<enter>" \
+    "move message to the archive"
+
+macro index D \
+    "<save-message>+personal/trash<enter>" \
+    "move message to the trash"
+
+macro index S \
+    "<save-message>+personal/spam<enter>"  \
+        "mark message as spam"
