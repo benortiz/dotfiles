@@ -8,5 +8,7 @@ set folder ="~/mail"
 set spoolfile = "+personal/inbox"
 source ~/.mutt/accounts/personal
 
+source ~/.mutt/dracula.muttrc
+
 folder-hook personal/* source ~/.mutt/accounts/personal
 # folder-hook work/*     source ~/.mutt/accounts/work

@@ -4,8 +4,6 @@ set sendmail  = "/usr/bin/msmtp -a personal"
 set mbox      = "+personal/archive"
 set postponed = "+personal/drafts"
 
-color status green default
-
 mailboxes "+personal/inbox"
 mailboxes "+personal/archive"
 mailboxes "+personal/sent"
