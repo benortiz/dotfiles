@@ -1,0 +1,15 @@
+[Unit]
+Description=Dropbox
+
+[Service]
+Environment=DISPLAY=''
+ExecStart=/home/ben/.dropbox-dist/dropboxd
+Restart=always
+# Restart service after 10 seconds if service crashes
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=dropbox
+
+[Install]
+WantedBy=basic.target
