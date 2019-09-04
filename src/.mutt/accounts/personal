@@ -3,22 +3,21 @@ set realname  = "Ben Ortiz"
 set sendmail  = "/usr/bin/msmtp -a personal"
 set mbox      = "+personal/archive"
 set postponed = "+personal/drafts"
+set trash			= "+personal/trash"
 
 mailboxes "+personal/inbox"
-mailboxes "+personal/archive"
 mailboxes "+personal/sent"
 mailboxes "+personal/drafts"
 mailboxes "+personal/spam"
+mailboxes "+personal/archive"
 mailboxes "+personal/trash"
 
-macro index y \
-    "<save-message>+personal/archive<enter>" \
-    "move message to the archive"
+macro index gi "<change-folder>=personal/inbox<enter>" "Go to inbox"
+macro index ga "<change-folder>=personal/archive<enter>" "Go to all mail"
+macro index gs "<change-folder>=personal/spam<enter>" "Go to spam"
+macro index gd "<change-folder>=personal/drafts<enter>" "Go to drafts"
+macro index gt "<change-folder>=personal/sent<enter>" "Go to sent"
+macro index gl "<change-folder>=personal/" "Go to label"
 
-macro index D \
-    "<save-message>+personal/trash<enter>" \
-    "move message to the trash"
-
-macro index S \
-    "<save-message>+personal/spam<enter>"  \
-        "mark message as spam"
+macro index,pager d "<save-message>=personal/trash<enter>" "Trash"
+macro index,pager y "<save-message>=personal/archive<enter>" "Archive"

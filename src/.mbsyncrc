@@ -53,8 +53,8 @@ Expunge Both
 
 Group personal
 Channel personal-inbox
-Channel personal-archive
-Channel personal-sent
 Channel personal-drafts
+Channel personal-sent
 Channel personal-trash
 Channel personal-spam
+Channel personal-archive

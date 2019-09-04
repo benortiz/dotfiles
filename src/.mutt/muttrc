@@ -1,14 +1,43 @@
-set sidebar_visible
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-set sidebar_folder_indent
-set sidebar_short_path
-set mail_check_stats
+set help = no
 
-set folder ="~/mail"
-set spoolfile = "+personal/inbox"
-source ~/.mutt/accounts/personal
+# Index page format. Default "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+set index_format = "%Z  %(%b %d %R)  %-15.15L  %s"
+
+set sidebar_visible
+set sidebar_width = 20
+set sidebar_folder_indent                # Indent nested folders
+set sidebar_short_path                   # Print only the folder name
+set sidebar_format = "%B%?F? ?%* %N"
+
+set folder = "~/mail"
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+folder-hook . "set read_inc=1000"
+
+set sleep_time=0                  # Don't wait to switch mailboxes
+set sort=reverse-date             # Sort newest at top
+set sort_aux=last-date-received   # Sorting for threads
+set mail_check_stats              # Enables unread counts
+
+set wait_key = no            # Don't require confirmation to get back from shell
+set delete                   # When archiving, don't ask for confirmation
+set timeout = 60             # Max time waiting for user input before syncing mail
+set mail_check = 0           # Minimum time between syncing mail
+unset confirmappend          # Seamless archive/move
+unset mark_old               # Read/new is enough
 
 source ~/.mutt/dracula.muttrc
+
+macro index S "!mbsync -a^M" "Update through mbsync"
+bind attach,index,pager g noop	# Keep g available for g+ commands
+bind attach,index gg first-entry
+bind attach,index G last-entry
+bind pager gg top
+bind pager G bottom
+
+# Set personal as the default mailbox
+set spoolfile = "+personal/inbox"
+source ~/.mutt/accounts/personal
 
 folder-hook personal/* source ~/.mutt/accounts/personal
 # folder-hook work/*     source ~/.mutt/accounts/work
