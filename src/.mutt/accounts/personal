@@ -19,5 +19,6 @@ macro index gd "<change-folder>=personal/drafts<enter>" "Go to drafts"
 macro index gt "<change-folder>=personal/sent<enter>" "Go to sent"
 macro index gl "<change-folder>=personal/" "Go to label"
 
-macro index,pager d "<save-message>=personal/trash<enter>" "Trash"
+bind index,pager d noop
+macro index,pager dd "<save-message>=personal/trash<enter>" "Trash"
 macro index,pager y "<save-message>=personal/archive<enter>" "Archive"
