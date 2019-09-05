@@ -1,6 +1,6 @@
 set from      = "hello.ben.ortiz@gmail.com"
 set realname  = "Ben Ortiz"
-set sendmail  = "/usr/bin/msmtp -a personal"
+set sendmail  = "/home/linuxbrew/.linuxbrew/bin/msmtp -a personal"
 set mbox      = "+personal/archive"
 set postponed = "+personal/drafts"
 set trash			= "+personal/trash"
