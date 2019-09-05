@@ -9,7 +9,7 @@ set sidebar_folder_indent                # Indent nested folders
 set sidebar_short_path                   # Print only the folder name
 set sidebar_format = "%B%?F? ?%* %N"
 
-set folder = "~/mail"
+set folder = ~/mail
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 folder-hook . "set read_inc=1000"
@@ -28,12 +28,19 @@ unset mark_old               # Read/new is enough
 
 source ~/.mutt/dracula.muttrc
 
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g   noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+
 macro index S "!mbsync -a^M" "Update through mbsync"
-bind attach,index,pager g noop	# Keep g available for g+ commands
-bind attach,index gg first-entry
-bind attach,index G last-entry
-bind pager gg top
-bind pager G bottom
 
 # Set personal as the default mailbox
 set spoolfile = "+personal/inbox"
