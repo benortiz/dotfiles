@@ -43,3 +43,5 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 # Set janky clipboard path
 export CT_CLIPBOARD=/tmp/clipboard
+# Opens the link on my local machine
+export BROWSER=local-open
