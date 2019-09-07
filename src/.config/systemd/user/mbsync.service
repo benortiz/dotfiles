@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync Mailboxes
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbsync -a
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mbsync
+
+[Install]
+RequiredBy=timers.target
