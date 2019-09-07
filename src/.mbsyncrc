@@ -1,7 +1,7 @@
 IMAPAccount personal
 Host imap.gmail.com
 User hello.ben.ortiz@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.personal.gpg"
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt --pinentry-mode cancel ~/.mailpass.personal.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
