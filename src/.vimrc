@@ -68,6 +68,7 @@ Plug 'christoomey/vim-tmux-navigator'					" Seamless tmux/vim movement
 Plug 'dracula/vim', { 'as': 'dracula' }				" Colorscheme
 Plug 'duggiefresh/vim-easydir'                " Create dir when saving new file
 Plug 'glts/vim-textobj-comment'               " Define comment targets
+Plug 'junegunn/goyo.vim'                      " Distraction free writing
 Plug 'kana/vim-textobj-user'                  " Dependency of rubyblock
 Plug 'mattn/webapi-vim'                       " Dependency of gist-vim
 Plug 'mattn/gist-vim'                         " Manage gists
@@ -86,17 +87,41 @@ Plug 'w0rp/ale'                               " Linter/fixer
 Plug 'wellle/targets.vim'                     " More surround targets
 
 " Syntax highlighting
-Plug 'vim-ruby/vim-ruby'
-Plug 'onemanstartup/vim-slim'
-Plug 'pangloss/vim-javascript'
+Plug 'gabrielelana/vim-markdown'
 Plug 'jparise/vim-graphql'                    " Dependent on pangloss
 Plug 'mxw/vim-jsx'                            " Dependent on pangloss
+Plug 'onemanstartup/vim-slim'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
 
 " Automatically install missing plugins on startup
 if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 	autocmd VimEnter * PlugInstall
 endif
 call plug#end()
+
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=20
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 let g:dracula_colorterm = 0 " Prevents the background from getting dark in tmux
 colorscheme dracula
@@ -148,6 +173,8 @@ let g:ale_fix_on_save_ignore = {
 \ 'ruby': ['rubocop'],
 \ 'javascript': ['eslint']
 \}
+
+let g:markdown_mapping_switch_status = '<leader>8'
 
 let g:gist_post_private = 1
 
