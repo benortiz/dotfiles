@@ -1,4 +1,4 @@
 LOCAL_OPEN_PORT=1999
 LOCAL_OPEN_USER=benortiz
 LOCAL_OPEN_CMD=open
-ALT_LOCALHOST=dev.benortiz.io
+ALT_LOCALHOST=localhost
