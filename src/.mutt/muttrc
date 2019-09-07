@@ -18,6 +18,7 @@ set sleep_time=0                  # Don't wait to switch mailboxes
 set sort=reverse-date             # Sort newest at top
 set sort_aux=last-date-received   # Sorting for threads
 set mail_check_stats              # Enables unread counts
+set query_command = "notmuch address %s"
 
 set wait_key = no            # Don't require confirmation to get back from shell
 set delete                   # When archiving, don't ask for confirmation
