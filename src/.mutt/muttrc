@@ -41,6 +41,7 @@ bind attach,browser,pager,index \Cu half-up
 bind attach,browser,pager,index \Cd half-down
 
 macro index S "!mbsync -a^M" "Update through mbsync"
+macro pager \cb "<enter-command>set pipe_decode = yes<enter>|urlview<enter><enter-command>set pipe_decode = no<enter>" "Call urlview to open links"
 
 # Set personal as the default mailbox
 set spoolfile = "+personal/inbox"
