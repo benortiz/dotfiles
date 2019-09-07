@@ -58,3 +58,71 @@ Channel personal-sent
 Channel personal-trash
 Channel personal-spam
 Channel personal-archive
+
+IMAPAccount work
+Host imap.gmail.com
+User benjamin@bluebottlecoffee.com
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt --pinentry-mode cancel ~/.mailpass.work.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote storage
+IMAPStore work-remote
+Account work
+
+# Local storage
+MaildirStore work-local
+Subfolders Verbatim
+Path ~/mail/work/
+Inbox ~/mail/work/inbox
+
+Channel work-inbox
+Master :work-remote:"INBOX"
+Slave :work-local:inbox
+Create Both
+Expunge Both
+
+Channel work-archive
+Master :work-remote:"[Gmail]/All Mail"
+Slave :work-local:archive
+Create Both
+Expunge Both
+
+Channel work-sent
+Master :work-remote:"[Gmail]/Sent Mail"
+Slave :work-local:sent
+Create Both
+Expunge Both
+
+Channel work-drafts
+Master :work-remote:"[Gmail]/Drafts"
+Slave :work-local:drafts
+Create Both
+Expunge Both
+
+Channel work-trash
+Master :work-remote:"[Gmail]/Trash"
+Slave :work-local:trash
+Create Both
+Expunge Both
+
+Channel work-eng-services
+Master :work-remote:"Engineering Services"
+Slave :work-local:eng
+Create Both
+Expunge Both
+
+Channel work-spam
+Master :work-remote:"[Gmail]/Spam"
+Slave :work-local:spam
+Create Both
+Expunge Both
+
+Group work
+Channel work-inbox
+Channel work-drafts
+Channel work-sent
+Channel work-trash
+Channel work-spam
+Channel work-archive
+Channel work-eng-services

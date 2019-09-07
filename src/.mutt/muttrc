@@ -49,4 +49,4 @@ set spoolfile = "+personal/inbox"
 source ~/.mutt/accounts/personal
 
 folder-hook personal/* source ~/.mutt/accounts/personal
-# folder-hook work/*     source ~/.mutt/accounts/work
+folder-hook work/*     source ~/.mutt/accounts/work

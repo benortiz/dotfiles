@@ -1,20 +1,28 @@
 set from      = "benjamin@bluebottlecoffee.com"
-set sendmail  = "/usr/bin/msmtp -a work"
+set realname  = "Benjamin Ortiz"
+set sendmail  = "/home/linuxbrew/.linuxbrew/bin/msmtp -a work"
 set mbox      = "+work/archive"
 set postponed = "+work/drafts"
+set trash			= "+work/trash"
 
-color status cyan default
+unmailboxes *
+mailboxes "+work/inbox"
+mailboxes "+work/eng"
+mailboxes "+work/sent"
+mailboxes "+work/drafts"
+mailboxes "+work/spam"
+mailboxes "+work/archive"
+mailboxes "+work/trash"
 
-macro index y \
-    "<save-message>+work/archive<enter>" \
-    "move message to the archive"
+macro index,pager gi "<change-folder>=work/inbox<enter>" "Go to inbox"
+macro index,pager ga "<change-folder>=work/archive<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=work/spam<enter>" "Go to spam"
+macro index,pager gd "<change-folder>=work/drafts<enter>" "Go to drafts"
+macro index,pager gt "<change-folder>=work/sent<enter>" "Go to sent"
+macro index,pager gl "<change-folder>=work/" "Go to label"
 
-macro index D \
-    "<save-message>+work/trash<enter>" \
-    "move message to the trash"
-
-macro index S \
-    "<save-message>+work/spam<enter>"  \
-        "mark message as spam"
+bind index,pager d noop
+macro index,pager dd "<save-message>=work/trash<enter>" "Trash"
+macro index,pager y "<save-message>=work/archive<enter>" "Archive"
 
 # vim:filetype=muttrc

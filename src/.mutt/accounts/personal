@@ -5,6 +5,7 @@ set mbox      = "+personal/archive"
 set postponed = "+personal/drafts"
 set trash			= "+personal/trash"
 
+unmailboxes *
 mailboxes "+personal/inbox"
 mailboxes "+personal/sent"
 mailboxes "+personal/drafts"
