@@ -153,8 +153,8 @@ nnoremap <silent> <leader>y :call system('ctcopy', getreg('"'))<CR>
 " ~/.local/bin/ctpaste
 nnoremap <silent> <leader>p :call setreg('"', system('ctpaste'))<CR>
 
-let g:gitgutter_realtime = 0            " Turn off realtime updates
-let g:gitgutter_eager = 0               " Turn off buffer loading updates
+let g:gitgutter_realtime = 1            " Turn on realtime updates
+let g:gitgutter_eager = 1               " Turn on buffer loading updates
 let g:gitgutter_sign_added = '•'
 let g:gitgutter_sign_modified = '•'
 let g:gitgutter_sign_removed = '•'
