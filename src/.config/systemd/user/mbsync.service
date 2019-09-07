@@ -4,6 +4,7 @@ Description=Sync Mailboxes
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mbsync -a
+ExecStartPost=/home/linuxbrew/.linuxbrew/bin/notmuch new
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=mbsync
