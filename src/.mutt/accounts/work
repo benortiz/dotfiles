@@ -16,3 +16,5 @@ macro index D \
 macro index S \
     "<save-message>+work/spam<enter>"  \
         "mark message as spam"
+
+# vim:filetype=muttrc

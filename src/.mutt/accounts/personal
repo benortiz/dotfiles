@@ -22,3 +22,5 @@ macro index,pager gl "<change-folder>=personal/" "Go to label"
 bind index,pager d noop
 macro index,pager dd "<save-message>=personal/trash<enter>" "Trash"
 macro index,pager y "<save-message>=personal/archive<enter>" "Archive"
+
+# vim:filetype=muttrc
