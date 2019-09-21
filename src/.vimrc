@@ -35,6 +35,9 @@ set incsearch
 set hlsearch
 set wildignore=*/node_modules/*,*/tmp/*
 
+" Make fzf available to vim
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+
 " Undo File
 if exists("+undofile")
   " undofile - This allows you to use undos after exiting and restarting
@@ -69,6 +72,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }				" Colorscheme
 Plug 'duggiefresh/vim-easydir'                " Create dir when saving new file
 Plug 'glts/vim-textobj-comment'               " Define comment targets
 Plug 'junegunn/goyo.vim'                      " Distraction free writing
+Plug 'junegunn/fzf.vim'                       " fzf in vim
 Plug 'kana/vim-textobj-user'                  " Dependency of rubyblock
 Plug 'mattn/webapi-vim'                       " Dependency of gist-vim
 Plug 'mattn/gist-vim'                         " Manage gists
@@ -138,6 +142,16 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> <leader>; :bd<CR>
 nnoremap gb :ls<CR>:b<Space>
 
+" Ripgrep and open the drawer
+nnoremap <leader>f :Find<space>
+nnoremap <leader>F :Find <C-R><C-W>
+
+" Launch FZF
+nnoremap <silent> <leader>a :Files<CR>
+
+" Search files that have been modified
+nnoremap <silent> <leader>g :GFiles?<CR>
+
 nnoremap ]a :ALENextWrap<CR>
 nnoremap [a :ALEPreviousWrap<CR>
 
@@ -184,5 +198,23 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+let g:fzf_layout = { 'down': '~20%' }
+" Pay attention to gitignore, but include hidden files
+let $FZF_DEFAULT_COMMAND = 'rg --files  --hidden --follow --glob "!.git/*"'
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 filetype indent plugin on
