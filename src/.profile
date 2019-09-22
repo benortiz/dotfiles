@@ -5,7 +5,7 @@
 # the files are located in the bash-doc package.
 
 # Reset vars to handle multiple source-ings in a session
-PATH="/bin:/usr/bin"
+PATH="/bin:/usr/bin:/usr/sbin"
 MANPATH=""
 INFOPATH=""
 
