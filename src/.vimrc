@@ -35,8 +35,22 @@ set incsearch
 set hlsearch
 set wildignore=*/node_modules/*,*/tmp/*
 
+" OS Detection
+if !exists("g:os")
+  if has("win64") || has("win32") || has("win16")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
 " Make fzf available to vim
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+if g:os == "Darwin"
+  set rtp+=/usr/local/opt/fzf
+elseif g:os == "Linux"
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+endif
+
 
 " Undo File
 if exists("+undofile")

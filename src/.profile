@@ -24,8 +24,14 @@ if [ -d "$HOME/.asdf" ] ; then
     PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"
 fi
 
-# Add linuxbrew to the path
-HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Add linuxbrew to the path
+  HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+elif [[ "$OSTYPE" == "darwin" ]]; then
+  # Add brew to the path
+  HOMEBREW_PREFIX=/usr/local
+fi
+
 if [ -d "$HOMEBREW_PREFIX" ] ; then
     HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"
     HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
